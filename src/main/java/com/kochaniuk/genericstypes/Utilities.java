@@ -32,6 +32,18 @@ class Utilities {
         };
     }
 
+    static List<Number> getNumbersList() {
+        return new ArrayList<Number>() {
+            {
+                add(1);
+                add(2D);
+                add(3F);
+                add(4L);
+                add(5);
+            }
+        };
+    }
+
     static List<String> getStringsList() {
         return new ArrayList<String>() {
             {

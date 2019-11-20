@@ -3,37 +3,39 @@ package com.kochaniuk.genericstypes;
 import java.util.List;
 
 public class GenericsTypesApplication {
+    private static final String PRINT_FORMAT = "Class: %s, value: %s";
 
-    private static int getListSize(List<?> list) {
-        // By default getting element without casting mechanism
-        // requires Object type
-        Object o = list.get(0);
+    // if getListSize would be List<? super Integer>
+    //
+    // then we can invokes getListSize with:
+    // getListSize( List<Integer> )
+    // getListSize( List<Number> )
+    // getListSize( List<Object> )
+    //
+    // in this case when we gets element
+    // required type reference is Object
+    private static int getListSize(List<? extends Number> list) {
+        Number n = list.get(0);
+        Double d = (Double) list.get(1);
+        Float f = (Float) list.get(2);
 
-        // However we can try to cast element on any reference type
-        // but compiler can not guarantee casting will run without throwing ClassCastException
-        Number n = (Number) list.get(1);
-
-        // We can not add any element to list marked with wildcard
-//        list.add(2F);
-//        list.add("string");
-
-        // the only one exception in adding null
-        list.add(null);
+        System.out.println(String.format(PRINT_FORMAT, n.getClass(), n));
+        System.out.println(String.format(PRINT_FORMAT, d.getClass(), d));
+        System.out.println(String.format(PRINT_FORMAT, f.getClass(), f));
 
         return list.size();
     }
 
     public static void main(String[] args) {
-        List<Integer> integerList = Utilities.getIntegersList();
-        List<Float> floatList = Utilities.getFloatsList();
+        List<Number> numberList = Utilities.getNumbersList();
 
-        System.out.println(getListSize(
-            integerList
-        ));
-        System.out.println(getListSize(
-            floatList
-        ));
+        // GenericsTypesApplication::getListSize expect List with Number reference type
+        // or inherits from Number, e.g. Integer, Float, Double, Long
+//        System.out.println(getListSize(stringList);
 
+        System.out.println(
+            getListSize(numberList)
+        );
 
     }
 
