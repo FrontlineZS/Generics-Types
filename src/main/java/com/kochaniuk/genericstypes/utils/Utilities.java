@@ -1,4 +1,4 @@
-package com.kochaniuk.genericstypes;
+package com.kochaniuk.genericstypes.utils;
 
 import lombok.experimental.UtilityClass;
 
@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @UtilityClass
-class Utilities {
+public class Utilities {
 
-    static List<Integer> getIntegersList() {
+    public static List<Integer> getIntegersList() {
         return new ArrayList<Integer>() {
             {
                 add(1);
@@ -20,7 +20,7 @@ class Utilities {
         };
     }
 
-    static List<Float> getFloatsList() {
+    public static List<Float> getFloatsList() {
         return new ArrayList<Float>() {
             {
                 add(1F);
@@ -32,7 +32,7 @@ class Utilities {
         };
     }
 
-    static List<Number> getNumbersList() {
+    public static List<Number> getNumbersList() {
         return new ArrayList<Number>() {
             {
                 add(1);
@@ -44,7 +44,7 @@ class Utilities {
         };
     }
 
-    static List<String> getStringsList() {
+    public static List<String> getStringsList() {
         return new ArrayList<String>() {
             {
                 add("one");

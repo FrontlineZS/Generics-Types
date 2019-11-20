@@ -1,5 +1,7 @@
 package com.kochaniuk.genericstypes;
 
+import com.kochaniuk.genericstypes.utils.Utilities;
+
 import java.util.List;
 
 public class GenericsTypesApplication {
