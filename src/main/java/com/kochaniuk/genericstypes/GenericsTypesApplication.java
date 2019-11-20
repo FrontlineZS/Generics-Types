@@ -1,13 +1,38 @@
 package com.kochaniuk.genericstypes;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import java.util.List;
 
-@SpringBootApplication
 public class GenericsTypesApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(GenericsTypesApplication.class, args);
-	}
+    private static double countSum(List<Integer> list) {
+        int sum = 0;
+
+        for (int element : list) {
+            sum += element;
+        }
+
+        return sum;
+    }
+
+    // returns Object cause of wildcard as List type reference
+    private static Object middleOne(List<?> list) {
+        if (list.size() > 0) {
+            return list.get(list.size() / 2);
+        }
+
+        return null;
+    }
+
+    public static void main(String[] args) {
+        List<Integer> integerList = Utilities.getIntegersList();
+
+        System.out.println(
+            countSum(integerList)
+        );
+
+        System.out.println(
+            middleOne(integerList)
+        );
+    }
 
 }
